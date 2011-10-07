@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+onepost:
+  id: 1
+  posttext: Post by ani
+  userid: ani
+  weight: 10
+  posts_id: NULL
+
+tworeply:
+  id: 2
+  posttext: Reply by sri
+  userid: sri
+  weight: 10
+  posts_id: 1

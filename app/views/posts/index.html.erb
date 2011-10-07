@@ -1,0 +1,39 @@
+<h1>Listing posts</h1>
+<% if session[:admin_prev]== true %>
+    <%= link_to 'Back to Home', "/users/#{User.find_by_userid(session[:user_id]).id}" %> <br/> <br/>
+<% else %>
+    <%= link_to 'Back to Home', "/posts/" %> <br/> <br/>
+<% end %>
+
+<% if !session[:user_id].nil? and session[:admin_prev] == false%>
+<%= link_to 'Create Post', new_post_path %>
+<% end %>
+<br/>  <br/>
+<table>
+  <tr>
+    <th>Seq. No.</th>
+    <th>Post Title</th>
+    <th>Created by</th>
+    <th>Replies</th>
+    <th>Votes</th>
+    <th>Weight</th>
+  </tr>
+<% i=0 %>
+<% @posts.each do |post| %>
+  <tr>
+    <td><%  i = i+1 %><%= i %></td>
+    <td><%= post.posttext %></td>
+    <td><%= post.userid%> </td>
+    <td><% total = Post.find_all_by_posts_id(post.id) %> <%=total.count %></td>
+    <td><%=Vote.find_all_by_posts_id(post.id).count %></td>
+    <td><%=post.weight %></td>
+    <td><a href="/posts/<%=post.id%>" id="show<%=post.id%>">Show</a></td>
+    <% if (session[:admin_prev] == true) %>
+            <td><a href="/posts/<%=post.id%>" id="destroy<%=post.id%>" data-confirm="Are you sure?" data-method="delete" rel="nofollow" >Destroy</a></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

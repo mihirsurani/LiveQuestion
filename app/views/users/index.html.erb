@@ -1,0 +1,38 @@
+<% if session[:admin_prev]== true %>
+
+    <%= link_to 'Back to Home', "users/#{User.find_by_userid(session[:user_id]).id}" %> <br/>   <br/>
+
+    <h1>Listing users</h1>
+
+    <table >
+      <tr align="center">
+        <th>Userid</th>
+        <th>Pwd</th>
+        <th>Permission</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th> Actions</th>
+        <th></th>
+        <th></th>
+      </tr>
+
+      <% @users.each do |user| %>
+          <%if user.userid != session[:user_id]%>
+          <tr style="padding-left: 20px;">
+            <td><%= user.userid %></td>
+            <td><%= user.pwd %></td>
+            <td><%= user.permission %></td>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td><a href="/users/<%=user.id%>" id="show<%=user.id%>">Show</a></td>
+            <td><a href="/users/<%=user.id%>/edit" id="edit<%=user.id%>">Reset Password</a></td>
+            <td><a href="/users/<%=user.id%>" id="destroy<%=user.id%>" data-confirm="Are you sure?" data-method="delete" rel="nofollow" >Destroy</a></td>
+          </tr>
+              <% end %>
+      <% end %>
+    </table>
+
+<% else %>
+    <h4> Authorization Prohibited. Contact Administrator. </h4>
+
+<% end %>

@@ -1,0 +1,36 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 1
+  userid: ani
+  pwd: ani123
+  permission: user
+  name: Anirudh
+  email: ani@gmail.com
+
+two:
+  id : 2
+  userid: sri
+  pwd: sri123
+  permission: user
+  name: Samyuktha
+  email: mihir@gmail.com
+
+adminacc:
+  id : 3
+  userid: mihiradmin
+  pwd: mihir123
+  permission: admin
+  name: Mihir Surani
+  email: mihir@gmail.com
+
+
+voter:
+  id : 5
+  userid: mihir.surani
+  pwd: sriani
+  permission: user
+  name: Mihir Anirudh
+  email: sri@gmail.com
+
+

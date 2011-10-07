@@ -1,0 +1,44 @@
+<%= form_tag("/users/login", :id => "login")  do%>
+    <table>
+      <tr>
+        <td>
+          Username
+        </td>
+        <td>
+          <div class="field">
+            <%= text_field_tag :username %>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Password
+        </td>
+        <td>
+          <div class="field">
+            <%= password_field_tag :password %>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Permission
+        </td>
+        <td>
+          <div class="field">
+            <%= select_tag "permission", options_for_select(["admin","user"]) ,:id => "permissions"  %>
+          </div>
+        </td>
+      </tr>
+      <tr >
+        <td>
+          <div class="actions" align="center">
+            <input type="submit" value="Login" text="Login">
+          </div>
+        </td>
+      </tr>
+    </table>
+
+<% end %>
+
+

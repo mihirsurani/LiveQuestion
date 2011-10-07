@@ -1,0 +1,73 @@
+<div id="notice" style="color:red; padding-bottom: 20px;"><%= notice %></div>
+
+<%= link_to 'Back', posts_path %>   <br/> <br/>
+
+<p style="display:none">
+  <input id="postid" type="text" value="<%=@post.id%>" />
+</p>
+<p>
+  <b style="font-size: 18px;font-weight: bold">Post Text:</b>
+  <%= @post.posttext %>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b style="font-size: 18px;font-weight: bold">Created by:</b>
+  <%= @post.userid %>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b style="font-size: 18px;font-weight: bold">Vote Count:</b>
+  <% votes = Vote.find_all_by_posts_id(@post.id) %>
+  <%= votes.count %>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <% if session[:admin_prev] != true %>
+  <span style="font-weight: bold">
+  <%= link_to 'Vote Post', "/votes/post/#{@post.id}/" %>
+</span>
+      <% end %>
+   <br/><br/>
+<div style="font-size: 20px;font-weight: bold;">Replies</div>   <br/>
+
+<% replies = Post.find_all_by_posts_id(@post.id) %>
+
+  <div style="margin-left: 20px; width: 80%;border: 1px solid #000000">
+          <table style="text-align: center">
+            <tr>
+              <th style="font-size: 16px">Sequence No.</th>
+              <th style="font-size: 16px">Reply</th>
+              <th style="font-size: 16px">Replied By</th>
+              <th style="font-size: 16px">Votes</th>
+              <% if session[:admin_prev] != true %>
+              <th style="font-size: 16px">Action</th>
+                  <% end %>
+            </tr>
+            <% i=0 %>
+            <% replies.each do |rep| %>
+                <tr>
+                  <td><%  i = i+1 %><%= i %></td>
+                  <td><%= rep.posttext %></td>
+                  <td><%=rep.userid  %></td>
+                  <td><%= Vote.find_all_by_posts_id(rep.id).count %></td>
+                  <% if session[:admin_prev] != true %>
+                   <td><%= link_to 'Vote Reply', "/votes/post/#{@post.id}/reply/#{rep.id}/" %></td>
+                  <% end %>
+                                     </tr>
+            <% end %>
+          </table>
+         </div>
+<br>
+
+
+<%= form_tag "/posts/#{@post.id}/reply" do %>
+
+<% if session[:admin_prev] != true %>
+
+<div id="reply" style="display:none">
+  <%= text_field_tag :reply %>   <br/> <br/>
+</div>
+
+<input type="button" value="Reply" id="reply_button" onclick="replyenable();" />
+<input type="submit" value="Submit" id="submit_button" style="display:none"/>
+
+ <% end %>
+
+<% end %>
+<br>
+
+<%= javascript_include_tag "show_post" %>

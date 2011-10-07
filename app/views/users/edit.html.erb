@@ -1,0 +1,12 @@
+<h1>Editing user</h1>
+
+<% if session[:admin_prev]== true %>
+    <%= link_to 'Back to Home', "/users/#{User.find_by_userid(session[:user_id]).id}" %> <br/> <br/>
+<% else %>
+    <%= link_to 'Back to Home', "/posts/" %> <br/> <br/>
+<% end %>
+
+<%= render 'form' %>
+
+<%= javascript_include_tag "users_edit" %>
+

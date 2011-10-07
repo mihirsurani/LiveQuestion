@@ -1,0 +1,33 @@
+<h1>Listing posts</h1>
+
+<table>
+  <tr>
+    <th>Seq. No.</th>
+    <th>Post Title</th>
+    <th>Created by</th>
+    <th>Replies</th>
+    <th>Votes</th>
+    <th>Weight</th>
+  </tr>
+<% i=0 %>
+  <% Post.find_all_by_userid(user.userid).each do |post|%>
+  <tr>
+    <td><%  i = i+1 %><%= i %></td>
+    <td><%= post.posttext %></td>
+    <td><%= post.userid%> </td>
+    <td><% total = Post.find_all_by_posts_id(post.id) %> <%=total.count %></td>
+    <td><%=Vote.find_all_by_posts_id(post.id).count %></td>
+    <td><%=post.weight %></td>
+    <td><%= link_to 'Show', post %></td>
+    <% if (session[:admin_prev] == true) %>
+    <td><%= link_to 'Destroy', post, confirm: 'Are you sure?', method: :delete %></td>
+        <% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<% if !session[:user_id].nil? %>
+<%= link_to 'New Post', new_post_path %>
+<% end %>

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  posts_id: 1
+  users_id: ani
+
+two:
+  posts_id: 2
+  users_id: sri

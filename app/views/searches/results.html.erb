@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<h3>Search Results</h3>
+
+<h4>Users:  </h4>
+
+<% user_posts = @results["userposts"] %>
+<% if !user_posts.nil? %>
+<% user_posts.each do |p| %>
+    <%=p.posttext %>     <br/>
+<% end %>
+<% end %>
+
+<h4>Posts: </h4>
+
+<% posts = @results["posts"] %>
+<% if !user_posts.nil? %>
+<% posts.each do |p| %>
+    <%=p.posttext %>  <br/>
+<% end %>
+<% end %>

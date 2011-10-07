@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LiveQuestion</title>
+   <%= stylesheet_link_tag    "application" %>
+  <%= stylesheet_link_tag    "color" %>
+  <%= stylesheet_link_tag    "reset" %>
+  <script type="text/javascript" src="/assets/jquery.js?body=1" > </script>
+  <script type="text/javascript" src="/assets/jquery_ujs.js?body=1"> </script>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div id="header" style="height: 80px; color:white; vertical-align:middle">
+<table>
+<tr>
+<td><div style="font-size: 35px; font-weight: bold; ">L<span style="font-size: 25px;">IVE</span>&nbsp;Q<span style="font-size: 25px;">UESTION</span></div></td>
+<td> <div style="text-align: right; font-size: 15px;">
+<%=form_tag "/search" , :method => "get" do %>
+   <%= text_field_tag :search_text %>
+   <%= submit_tag "Search" %> <br/>
+      </div></td>
+</tr>
+</table>
+
+</div>
+<% if !session[:user_id].nil?%>
+
+          <div align="left" style="font-size: 17px; padding-top: 20px; padding-right:20px; padding-left: 20px;">
+            Welcome '<%= session[:user_id] %>'
+            <div align =  right>
+            <%= link_to  "Sign out", "/users/signout" %>  |
+            <%= link_to 'Edit Profile', edit_user_path(User.find_by_userid(session[:user_id])) %>
+            </div>
+            </div>
+<br/>
+<%end%>
+
+ <%end%>
+
+<%= yield %>
+
+</body>
+</html>

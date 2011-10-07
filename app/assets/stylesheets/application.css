@@ -1,0 +1,38 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+ *= require_tree . 
+*/
+
+html body div#header table tbody tr td{
+    padding-top: 20px;
+    padding-left: 50px;
+    padding-right: 60px;
+}
+
+#login{
+    padding-top: 40px;
+    margin: 0px auto 0 !important;
+}
+
+input type[submit] {
+   border:  1px solid black;
+}
+
+#permissions{
+   width: 150px;
+}
+
+a {
+   text-decoration: underline !important;
+}
+
+h1 {
+   font-size: 20px !important;
+   padding-left: 30px !important;
+   font-weight: bold !important;
+   color: maroon;
+    padding-bottom: 20px !important;
+}

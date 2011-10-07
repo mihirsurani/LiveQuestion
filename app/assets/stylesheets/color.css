@@ -1,0 +1,87 @@
+/*
+@group Colors
+-----------------------
+     Colors
+-----------------------
+*/
+body,
+body.altlayout {
+	background-image: url(bg_main.png);
+}
+#header {
+	background-image: url(bg_body.png);
+}
+#content {
+	padding-top: 50px;
+}
+/*Box*/
+.box {
+	-webkit-box-shadow: 0px 0px 4px #929292;
+	box-shadow: 0px 0px 4px #929292;
+	-moz-box-shadow: 0px 0px 4px #929292;
+}
+/*Box Header*/
+.box .header {
+	background-image: url(bg_box.png);
+}
+
+/*Box Dragg*/
+.box .header .draggable {
+ margin-top: 7px;
+	background-image: url(draggable.png);
+}
+/*Box Toggle*/
+.box .header .toggle {
+ height: 22px;
+	background-image: url(toggle.png);
+}
+.box .header .toggle:hover,
+.box .header .toggle:focus {
+	background-image: url(toggle_hover.png);
+}
+
+/*Separator*/
+#header .separator,
+#footer.separator {
+	background: url(bg_sep.png) repeat-x center center;
+}
+/*Navigation*/
+.altlayout #navigation,
+#navigation {
+	background: url(bg_sep.png) repeat-x center top;
+}
+.altlayout #navigation li {
+	background: url(bg_sep.png) repeat-x center top;
+}
+.altlayout #navigation li.current,
+.altlayout #navigation li.current,
+#navigation li.current,
+#navigation li.current {
+	background: url(bg_active.png) repeat-x top;
+}
+
+#navigation li a:hover,
+#navigation li a:focus {
+	background-image: url(bg_active_hover.png);
+}
+
+/*Menu*/
+.altlayout #menu li a.current,
+#menu li a.current {
+	background: url(bg_activemenu.png) repeat-x center center;
+	box-shadow: 0px 1px 0px #707070;
+	-webkit-box-shadow: 0px 1px 0px #707070;
+	-moz-box-shadow: 0px 1px 0px #707070;
+}
+/*Menu dropdown*/
+#menu li.dropdown {
+	background-image: url(dropdown.png);
+}
+
+/*Footer*/
+#footer {
+ color: #565656;
+}
+#footer.separator {
+background: url(bg_sep_alt.png) repeat-x center center;
+}

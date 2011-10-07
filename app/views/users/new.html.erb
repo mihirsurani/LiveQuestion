@@ -1,0 +1,39 @@
+
+<table style=" vertical-align: top; padding-top: 50px">
+  <tr  style="padding-top: 50px">
+    <th style="padding-left: 50px; font-size: 18px;">
+      <% if session[:admin_prev]== true %>
+          <%= link_to 'Back to Home', "/users/#{User.find_by_userid(session[:user_id]).id}" %>
+      <% end %>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+      User Registration
+    </th>
+    <% if session[:admin_prev] != true %>
+
+    <th align="center" >
+      User Login
+    </th>
+        <% end %>
+  </tr>
+<tr>
+    <td style=" vertical-align: top;  padding-top: 50px;" >
+<% if session[:user_id].nil? or session[:admin_prev] == true %>
+    <%= render 'formnew' %>
+<%end%>
+     </td>
+    <td style=" vertical-align: top;" >
+<% if session[:user_id].nil? %>
+    <%= render 'formlogin' %>
+<% end %>
+    </td>
+</tr>
+<% if session[:admin_prev] == true%>
+<%end%>
+</table>
+<%= javascript_include_tag "users_new" %>
+
+
